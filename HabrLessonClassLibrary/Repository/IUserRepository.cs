@@ -10,5 +10,7 @@ namespace HabrLessonClassLibrary.Repository
         Domain.User GetUserById(int id);
         Domain.User GetUserByLogin(string login);
         Domain.User Save(Domain.User user);
+        void CreateUser(Domain.User user);
+        IEnumerable<HabrLessonClassLibrary.Repository.Sql.Persistent.User> GetAllPersistentUsers();
     }
 }

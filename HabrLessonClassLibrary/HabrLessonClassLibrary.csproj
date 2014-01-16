@@ -39,6 +39,8 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.Mvc, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -50,15 +52,52 @@
     <Compile Include="Domain\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\IUserRepository.cs" />
+    <Compile Include="Repository\Sql\Persistent\HabrLessonModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>HabrLessonModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repository\Sql\Persistent\HabrLessonModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>HabrLessonModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repository\Sql\Persistent\HabrLessonModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>HabrLessonModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Repository\Sql\Persistent\User.cs">
+      <DependentUpon>HabrLessonModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Repository\Sql\UserRepository.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Repository\Sql\Persistent\" />
     <Folder Include="Web\Controllers\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+    <EntityDeploy Include="Repository\Sql\Persistent\HabrLessonModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>HabrLessonModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Repository\Sql\Persistent\HabrLessonModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>HabrLessonModel.edmx</DependentUpon>
+      <LastGenOutput>HabrLessonModel.Context.cs</LastGenOutput>
+    </None>
+    <None Include="Repository\Sql\Persistent\HabrLessonModel.edmx.diagram">
+      <DependentUpon>HabrLessonModel.edmx</DependentUpon>
+    </None>
+    <None Include="Repository\Sql\Persistent\HabrLessonModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>HabrLessonModel.edmx</DependentUpon>
+      <LastGenOutput>HabrLessonModel.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

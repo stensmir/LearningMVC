@@ -7,7 +7,7 @@ namespace HabrLessonClassLibrary.Repository.Sql
 {
     public class UserRepository : IUserRepository
     {
-        //public string Hab { get; set; }
+        public Persistent.HabrLessonDb Context { get; set; }
         public Domain.User GetUserById(int id)
         {
             throw new NotImplementedException();
@@ -21,6 +21,16 @@ namespace HabrLessonClassLibrary.Repository.Sql
         public Domain.User Save(Domain.User user)
         {
             throw new NotImplementedException();
+        }
+
+        public void CreateUser(Domain.User user)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IEnumerable<Persistent.User> GetAllPersistentUsers()
+        {
+            return Context.User.ToList();
         }
     }
 }
