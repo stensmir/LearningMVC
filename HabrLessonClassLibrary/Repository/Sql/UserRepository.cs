@@ -30,7 +30,7 @@ namespace HabrLessonClassLibrary.Repository.Sql
 
         public IEnumerable<Persistent.User> GetAllPersistentUsers()
         {
-            return Context.User.ToList();
+             return Context.User.ToList();
         }
     }
 }
