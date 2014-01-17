@@ -11,5 +11,6 @@ namespace HabrLessonClassLibrary.Domain
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string LinkToAvatar { get; set; }
+        public string LoginName { get; set; }
     }
 }

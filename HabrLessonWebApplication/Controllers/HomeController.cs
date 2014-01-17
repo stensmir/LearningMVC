@@ -14,7 +14,7 @@ namespace HabrLessonWebApplication.Controllers
         private readonly IUserRepository _userRepository;
         public ActionResult Index()
         {
-            var users = _userRepository.GetAllPersistentUsers();
+            var users = _userRepository.GetUserById(0);
             return View();
         }
 
