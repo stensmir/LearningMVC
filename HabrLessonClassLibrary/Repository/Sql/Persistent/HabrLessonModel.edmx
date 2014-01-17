@@ -33,7 +33,7 @@
           <Property Name="Login" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="LinkToAvatar" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
         </EntityType>
-        <EntityContainer Name="HabrLessonDatabaseEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="HabrLessonDB" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="User" EntityType="Self.User" />
         </EntityContainer>
       </Schema>
@@ -41,7 +41,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="HabrLessonDatabaseModelStoreContainer" CdmEntityContainer="HabrLessonDatabaseEntities">
+        <EntityContainerMapping StorageEntityContainer="HabrLessonDatabaseModelStoreContainer" CdmEntityContainer="HabrLessonDB">
           <EntitySetMapping Name="User">
             <EntityTypeMapping TypeName="HabrLessonDatabaseModel.User">
               <MappingFragment StoreEntitySet="User">

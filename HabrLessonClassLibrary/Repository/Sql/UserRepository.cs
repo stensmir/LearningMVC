@@ -34,7 +34,7 @@ namespace HabrLessonClassLibrary.Repository.Sql
         public IEnumerable<Persistent.User> GetAllPersistentUsers()
         {
 
-            using (var context = new Persistent.HabrLessonDatabaseEntities())
+            using (var context = new Persistent.HabrLessonDB())
             {
                 return context.User.ToList();
             }
