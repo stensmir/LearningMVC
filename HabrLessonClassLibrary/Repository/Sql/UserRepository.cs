@@ -7,30 +7,37 @@ namespace HabrLessonClassLibrary.Repository.Sql
 {
     public class UserRepository : IUserRepository
     {
-        public Persistent.HabrLessonDb Context { get; set; }
-        public Domain.User GetUserById(int id)
-        {
-            throw new NotImplementedException();
-        }
+        //public Persistent.HabrLessonDb Context { get; set; }
+        //public Domain.User GetUserById(int id)
+        //{
+        //    using (var context = new Persistent.HabrLessonDb())
+        //    { 
+        //      throw new NotImplementedException(); 
+        //    }
+        //}
 
-        public Domain.User GetUserByLogin(string login)
-        {
-            throw new NotImplementedException();
-        }
+        //public Domain.User GetUserByLogin(string login)
+        //{
+        //    throw new NotImplementedException();
+        //}
 
-        public Domain.User Save(Domain.User user)
-        {
-            throw new NotImplementedException();
-        }
+        //public Domain.User Save(Domain.User user)
+        //{
+        //    throw new NotImplementedException();
+        //}
 
-        public void CreateUser(Domain.User user)
-        {
-            throw new NotImplementedException();
-        }
+        //public void CreateUser(Domain.User user)
+        //{
+        //    throw new NotImplementedException();
+        //}
 
         public IEnumerable<Persistent.User> GetAllPersistentUsers()
         {
-             return Context.User.ToList();
+
+            using (var context = new Persistent.HabrLessonDatabaseEntities())
+            {
+                return context.User.ToList();
+            }
         }
     }
 }

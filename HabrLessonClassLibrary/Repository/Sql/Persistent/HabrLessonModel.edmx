@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="HabrLessonDbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="HabrLessonDatabaseModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="User">
           <Key>
             <PropertyRef Name="Id" />
@@ -15,14 +15,14 @@
           <Property Name="Login" Type="varchar" MaxLength="250" Nullable="false" />
           <Property Name="LinkToAvatar" Type="varchar(max)" />
         </EntityType>
-        <EntityContainer Name="HabrLessonDbModelStoreContainer">
+        <EntityContainer Name="HabrLessonDatabaseModelStoreContainer">
           <EntitySet Name="User" EntityType="Self.User" Schema="HabrLesson" store:Type="Tables" />
         </EntityContainer>
       </Schema>
     </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="HabrLessonDbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="HabrLessonDatabaseModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="User">
           <Key>
             <PropertyRef Name="Id" />
@@ -33,7 +33,7 @@
           <Property Name="Login" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="LinkToAvatar" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
         </EntityType>
-        <EntityContainer Name="HabrLessonDb" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="HabrLessonDatabaseEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="User" EntityType="Self.User" />
         </EntityContainer>
       </Schema>
@@ -41,9 +41,9 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="HabrLessonDbModelStoreContainer" CdmEntityContainer="HabrLessonDb">
+        <EntityContainerMapping StorageEntityContainer="HabrLessonDatabaseModelStoreContainer" CdmEntityContainer="HabrLessonDatabaseEntities">
           <EntitySetMapping Name="User">
-            <EntityTypeMapping TypeName="HabrLessonDbModel.User">
+            <EntityTypeMapping TypeName="HabrLessonDatabaseModel.User">
               <MappingFragment StoreEntitySet="User">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="FirstName" ColumnName="FirstName" />

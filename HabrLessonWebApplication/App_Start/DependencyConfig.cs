@@ -16,15 +16,16 @@ namespace HabrLessonWebApplication.App_Start
     {
         public static void Configure()
         {
-            var context = new HabrLessonClassLibrary.Repository.Sql.Persistent.HabrLessonDb();
+           // var context = new HabrLessonClassLibrary.Repository.Sql.Persistent.HabrLessonDb();
+
 
             var builder = new ContainerBuilder();
             {
+                //builder.Register(new HabrLessonClassLibrary.Repository.Sql.Persistent.HabrLessonDb())
 
                 //repositories
                 builder.RegisterType<UserRepository>()
                        .As<IUserRepository>()
-                       .WithProperty("Context", context)
                        .SingleInstance();
 
                 //controllesrs
