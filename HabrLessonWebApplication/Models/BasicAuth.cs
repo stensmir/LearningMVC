@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json.Linq;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -36,16 +37,22 @@ namespace HabrLessonWebApplication.Models
                 };
 
                 var response = client.PostAsync("https://accounts.google.com/o/oauth2/token", new FormUrlEncodedContent(postData)).Result;
-                var con = response.Content.ReadAsStringAsync().Result; 
 
+                var responseJson = response.Content.ReadAsStringAsync().Result; 
+                dynamic content = JObject.Parse(responseJson);
 
-                return "";
+                return (string)content.access_token;
             }
         }
 
-        public virtual string GetUserInfo(string authToken)
+        public virtual string GetUserInfo(string accessToken)
         {
-            throw new NotImplementedException();
+            using (var client = new HttpClient())
+            {
+                var response = client.GetStringAsync(string.Format("https://www.googleapis.com/oauth2/v1/userinfo?access_token={0}", accessToken)).Result;
+                var n = 4;
+                return "";
+            }
         }
     }
 }
