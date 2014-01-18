@@ -23,16 +23,17 @@ namespace HabrLessonClassLibrary.Repository.Sql
 
         public Domain.User GetUserByLogin(string login)
         {
+            //Contract.Reauires
             throw new NotImplementedException();
         }
 
-        public Domain.User Save(Domain.User user)
+        public void Save(Domain.User user)
         {
             Contract.Requires(user != null);
 
             using (var context = new Persistent.HabrLessonDB())
             {
-                var persistentUser = this.ConvertUserToDomain(user);
+                var persistentUser = this.ConvertUserToPersistent(user);
                 context.User.Add(persistentUser);
                 context.SaveChanges();
             }

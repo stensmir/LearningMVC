@@ -9,7 +9,7 @@ namespace HabrLessonClassLibrary.Repository
     {
         Domain.User GetUserById(int id);
         Domain.User GetUserByLogin(string login);
-        Domain.User Save(Domain.User user);
+        void Save(Domain.User user);
         void CreateUser(Domain.User user);
         IEnumerable<Domain.User> GetAllDomainUsers();
     }
