@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Diagnostics.Contracts;
 
 namespace HabrLessonClassLibrary.Repository.Sql
 {
@@ -20,20 +21,27 @@ namespace HabrLessonClassLibrary.Repository.Sql
             }
         }
 
-        //public Domain.User GetUserByLogin(string login)
-        //{
-        //    throw new NotImplementedException();
-        //}
+        public Domain.User GetUserByLogin(string login)
+        {
+            throw new NotImplementedException();
+        }
 
-        //public Domain.User Save(Domain.User user)
-        //{
-        //    throw new NotImplementedException();
-        //}
+        public Domain.User Save(Domain.User user)
+        {
+            Contract.Requires(user != null);
 
-        //public void CreateUser(Domain.User user)
-        //{
-        //    throw new NotImplementedException();
-        //}
+            using (var context = new Persistent.HabrLessonDB())
+            {
+                var persistentUser = this.ConvertUserToDomain(user);
+                context.User.Add(persistentUser);
+                context.SaveChanges();
+            }
+        }
+
+        public void CreateUser(Domain.User user)
+        {
+            throw new NotImplementedException();
+        }
 
         public IEnumerable<Domain.User> GetAllDomainUsers()
         {
@@ -53,6 +61,18 @@ namespace HabrLessonClassLibrary.Repository.Sql
                  LastName = persistentUser.LastName,
                  LinkToAvatar = persistentUser.LinkToAvatar,
                  LoginName = persistentUser.Login
+            };
+        }
+
+        private Persistent.User ConvertUserToPersistent(Domain.User domainUser)
+        {
+            return new Persistent.User
+            {
+                Id = domainUser.Id,
+                FirstName = domainUser.FirstName,
+                LastName = domainUser.LastName,
+                LinkToAvatar = domainUser.LinkToAvatar,
+                Login = domainUser.LoginName
             };
         }
     }
