@@ -20,7 +20,7 @@ namespace HabrLessonWebApplication.Controllers
 
         public ActionResult SignIn(string code)
         {
-            var token = new BasicAuth().GetUserInfo(code, "195877203613-644j0q6hmmha74lrtc01s2mupao32q1f.apps.googleusercontent.com", "wyTBnUJodeGGuHV5L1g3S_SQ", "https://localhost:44300/GoogleAuth/SignIn", "authorization_code"); 
+            var token = new BasicAuth().GetAuthToken(code, "195877203613-644j0q6hmmha74lrtc01s2mupao32q1f.apps.googleusercontent.com", "wyTBnUJodeGGuHV5L1g3S_SQ", "https://localhost:44300/GoogleAuth/SignIn", "authorization_code"); 
             return View();
         }
 
