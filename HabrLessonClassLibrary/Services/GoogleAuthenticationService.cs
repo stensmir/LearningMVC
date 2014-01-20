@@ -45,11 +45,13 @@ namespace HabrLessonClassLibrary.Services
 
         public string GetUserInfo(string accessToken)
         {
-            //using (var client = new HttpClient())
-            //{
-                
-            //}
-            return "";
+            using (var client = new HttpClient())
+            {
+                var response = client.GetStringAsync(string.Format("https://www.googleapis.com/oauth2/v1/userinfo?access_token={0}", accessToken)).Result;
+                var b = 5;
+                return "";
+            }
+
         }
     }
 }

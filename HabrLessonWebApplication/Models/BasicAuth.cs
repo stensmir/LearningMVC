@@ -51,7 +51,6 @@ namespace HabrLessonWebApplication.Models
             using (var client = new HttpClient())
             {
                 var response = client.GetStringAsync(string.Format("https://www.googleapis.com/oauth2/v1/userinfo?access_token={0}", accessToken)).Result;
-                var n = 4;
                 return "";
             }
         }

@@ -8,13 +8,14 @@ using HabrLessonClassLibrary.Services;
 
 namespace HabrLessonWebApplication.Controllers
 {
-    public class GoogleAuthController : Controller
+    public class GoogleController : Controller
     {
 
         private IAuthenticationService _googleAuth { get; set; }
-        public GoogleAuthController()
+        
+        public GoogleController()
         {
-            _googleAuth = DependencyResolver.Current.GetServices<IAuthenticationService>().Single(); ;
+            _googleAuth = DependencyResolver.Current.GetServices<IAuthenticationService>().Single();
         }
         public ActionResult Index(string code)
         {
