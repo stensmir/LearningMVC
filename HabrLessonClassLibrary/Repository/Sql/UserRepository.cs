@@ -69,7 +69,7 @@ namespace HabrLessonClassLibrary.Repository.Sql
         {
             return new Persistent.User
             {
-                Id = domainUser.Id,
+                Id = (int)domainUser.Id,
                 FirstName = domainUser.FirstName,
                 LastName = domainUser.LastName,
                 LinkToAvatar = domainUser.LinkToAvatar,

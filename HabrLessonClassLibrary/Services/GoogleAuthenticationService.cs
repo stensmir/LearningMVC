@@ -6,6 +6,7 @@ using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web;
+using System.Numerics;
 
 namespace HabrLessonClassLibrary.Services
 {
@@ -21,8 +22,6 @@ namespace HabrLessonClassLibrary.Services
 
         public string GetAccessToken(string code, string clientId, string clientSecret, string redirectUri, string grantType)
         {
-
-            
             using (var client = new HttpClient())
             {
                 var postData = new List<KeyValuePair<string, string>> 
@@ -43,13 +42,22 @@ namespace HabrLessonClassLibrary.Services
             }
         }
 
-        public string GetUserInfo(string accessToken)
+        public Domain.User GetUserInfo(string accessToken)
         {
             using (var client = new HttpClient())
             {
                 var response = client.GetStringAsync(string.Format("https://www.googleapis.com/oauth2/v1/userinfo?access_token={0}", accessToken)).Result;
-                var b = 5;
-                return "";
+                dynamic content = JObject.Parse(response);
+
+
+                return new Domain.User 
+                {
+                    Id = BigInteger.Parse((string)content.id),
+                    FirstName = content.given_name,
+                    LastName = content.family_name,
+                    LinkToAvatar = "",
+                    LoginName = content.email
+                };
             }
 
         }

@@ -14,6 +14,7 @@ namespace HabrLessonWebApplication.Controllers
         private readonly IUserRepository _userRepository;
         public ActionResult Index()
         {
+            var x = Session["User"];
             return View();
         }
 
