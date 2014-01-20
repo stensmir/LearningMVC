@@ -12,10 +12,8 @@ namespace HabrLessonWebApplication.Controllers
         //
         // GET: /Home/
         private readonly IUserRepository _userRepository;
-        public ActionResult Index(string code)
+        public ActionResult Index()
         {
-            var cc = code;
-            //var users = _userRepository.GetUserById(0);
             return View();
         }
 
@@ -23,6 +21,11 @@ namespace HabrLessonWebApplication.Controllers
         {
             _userRepository = userRepository;
         }
+
+        //public ActionResult SignIn()
+        //{ 
+
+        //}
 
     }
 }
