@@ -20,9 +20,8 @@ namespace HabrLessonWebApplication
             //);
 
             routes.MapRoute(null, "", new { controller = "Home", Action = "Index" });
-            routes.MapRoute(null, "GoogleAuth", new { controller = "GoogleAuth", Action = "Index" });
-            routes.MapRoute(null, "GoogleAuth/SignIn", new { controller = "GoogleAuth", Action = "SignIn" });
-            routes.MapRoute(null, "GoogleAuth/GetUserInfo", new { controller = "GoogleAuth", Action = "GetUserInfo" });
+            routes.MapRoute(null, "Google", new { controller = "Google", Action = "Index" });
+            routes.MapRoute(null, "Google/SignIn", new { controller = "Google", Action = "SignIn" });
         }
     }
 }

@@ -12,9 +12,9 @@ namespace HabrLessonWebApplication.Controllers
         //
         // GET: /Home/
         private readonly IUserRepository _userRepository;
-        public ActionResult Index(dynamic code)
+        public ActionResult Index()
         {
-            var cc = code;
+            var x = Session["User"];
             return View();
         }
 
@@ -23,11 +23,10 @@ namespace HabrLessonWebApplication.Controllers
             _userRepository = userRepository;
         }
 
-        public ActionResult GetUserInfo(object value)
-        {
-            var x = value;
-            return View();
-        }
+        //public ActionResult SignIn()
+        //{ 
+
+        //}
 
     }
 }

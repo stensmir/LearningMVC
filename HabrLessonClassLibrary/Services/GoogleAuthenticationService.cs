@@ -6,24 +6,21 @@ using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web;
+using System.Numerics;
 
-namespace HabrLessonWebApplication.Models
+namespace HabrLessonClassLibrary.Services
 {
-    public class BasicAuth
+    public class GoogleAuthenticationService : IAuthenticationService
     {
         private readonly string _baseGoogleRequestCodeUrl = "https://accounts.google.com/o/oauth2/auth?redirect_uri={0}&response_type={1}&client_id={2}&scope={3}";
-        //private readonly string _baseGoogleRequesTokenUrl = "code={0}&client_id={1}&client_secret={2}&redirect_uri={3}&grant_type={4}";
 
-
-        public virtual string GetUrlRequest(string redirectUri, string responseType, string clientId, string scope)
+        public string GetUrlRequest(string redirectUri, string responseType, string clientId, string scope)
         {
             var requestString = string.Format(_baseGoogleRequestCodeUrl, redirectUri, responseType, clientId, scope);
             return requestString;
-            
         }
 
-
-        public virtual string GetAuthToken(string code, string clientId, string clientSecret, string redirectUri, string grantType)
+        public string GetAccessToken(string code, string clientId, string clientSecret, string redirectUri, string grantType)
         {
             using (var client = new HttpClient())
             {
@@ -38,21 +35,31 @@ namespace HabrLessonWebApplication.Models
 
                 var response = client.PostAsync("https://accounts.google.com/o/oauth2/token", new FormUrlEncodedContent(postData)).Result;
 
-                var responseJson = response.Content.ReadAsStringAsync().Result; 
+                var responseJson = response.Content.ReadAsStringAsync().Result;
                 dynamic content = JObject.Parse(responseJson);
 
                 return (string)content.access_token;
             }
         }
 
-        public virtual string GetUserInfo(string accessToken)
+        public Domain.User GetUserInfo(string accessToken)
         {
             using (var client = new HttpClient())
             {
                 var response = client.GetStringAsync(string.Format("https://www.googleapis.com/oauth2/v1/userinfo?access_token={0}", accessToken)).Result;
-                var n = 4;
-                return "";
+                dynamic content = JObject.Parse(response);
+
+
+                return new Domain.User 
+                {
+                    Id = BigInteger.Parse((string)content.id),
+                    FirstName = content.given_name,
+                    LastName = content.family_name,
+                    LinkToAvatar = "",
+                    LoginName = content.email
+                };
             }
+
         }
     }
 }
