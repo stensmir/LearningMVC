@@ -15,9 +15,10 @@ namespace HabrLessonClassLibrary.Repository.Sql.Persistent
     public partial class User
     {
         public int Id { get; set; }
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
-        public string Login { get; set; }
+        public string GivenName { get; set; }
+        public string FamilyName { get; set; }
+        public string Email { get; set; }
         public string LinkToAvatar { get; set; }
+        public string GoogleId { get; set; }
     }
 }

@@ -13,9 +13,9 @@ namespace HabrLessonClassLibrary.Repository.Sql.Persistent
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class HabrLessonDB : DbContext
+    public partial class HabrLessonDatabaseEntities : DbContext
     {
-        public HabrLessonDB()
+        public HabrLessonDatabaseEntities()
             : base("name=HabrLessonDB")
         {
         }

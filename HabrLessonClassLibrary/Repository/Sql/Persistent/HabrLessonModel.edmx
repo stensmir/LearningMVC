@@ -9,11 +9,12 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="int" Nullable="false" />
-          <Property Name="FirstName" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="LastName" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="Login" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="GivenName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="FamilyName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Email" Type="varchar" MaxLength="250" Nullable="false" />
           <Property Name="LinkToAvatar" Type="varchar(max)" />
+          <Property Name="GoogleId" Type="varchar(max)" />
         </EntityType>
         <EntityContainer Name="HabrLessonDatabaseModelStoreContainer">
           <EntitySet Name="User" EntityType="Self.User" Schema="HabrLesson" store:Type="Tables" />
@@ -27,13 +28,14 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" />
-          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Login" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="GivenName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="FamilyName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="LinkToAvatar" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="GoogleId" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
         </EntityType>
-        <EntityContainer Name="HabrLessonDB" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="HabrLessonDatabaseEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="User" EntityType="Self.User" />
         </EntityContainer>
       </Schema>
@@ -41,15 +43,16 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="HabrLessonDatabaseModelStoreContainer" CdmEntityContainer="HabrLessonDB">
+        <EntityContainerMapping StorageEntityContainer="HabrLessonDatabaseModelStoreContainer" CdmEntityContainer="HabrLessonDatabaseEntities">
           <EntitySetMapping Name="User">
             <EntityTypeMapping TypeName="HabrLessonDatabaseModel.User">
               <MappingFragment StoreEntitySet="User">
                 <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
-                <ScalarProperty Name="LastName" ColumnName="LastName" />
-                <ScalarProperty Name="Login" ColumnName="Login" />
+                <ScalarProperty Name="GivenName" ColumnName="GivenName" />
+                <ScalarProperty Name="FamilyName" ColumnName="FamilyName" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
                 <ScalarProperty Name="LinkToAvatar" ColumnName="LinkToAvatar" />
+                <ScalarProperty Name="GoogleId" ColumnName="GoogleId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
