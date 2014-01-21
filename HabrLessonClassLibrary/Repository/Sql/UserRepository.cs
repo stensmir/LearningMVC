@@ -73,7 +73,9 @@ namespace HabrLessonClassLibrary.Repository.Sql
                 GivenName = domainUser.GivenName,
                 FamilyName = domainUser.FamilyName,
                 LinkToAvatar = domainUser.LinkToAvatar,
-                Email = domainUser.Email
+                Email = domainUser.Email,
+                Password = "",
+                GoogleId = domainUser.GoogleId
             };
         }
     }

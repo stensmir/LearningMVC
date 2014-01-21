@@ -45,24 +45,26 @@ namespace HabrLessonClassLibrary.Services
 
         public Domain.User GetUserByAccessToken(string accessToken)
         {
-
-
-            using (var client = new HttpClient())
+            if (accessToken != null)
             {
-                var response = client.GetStringAsync(string.Format("https://www.googleapis.com/oauth2/v1/userinfo?access_token={0}", accessToken)).Result;
-                dynamic content = JObject.Parse(response);
 
-
-                return new Domain.User
+                using (var client = new HttpClient())
                 {
-                    LinkToAvatar = "",
-                    Email = content.email,
-                    GoogleId = (string)content.id,
-                    FamilyName = (string)content.family_name,
-                    GivenName = (string)content.given_name
-                };
-            }
+                    var response = client.GetStringAsync(string.Format("https://www.googleapis.com/oauth2/v1/userinfo?access_token={0}", accessToken)).Result;
+                    dynamic content = JObject.Parse(response);
 
+
+                    return new Domain.User
+                    {
+                        Email = content.email,
+                        GoogleId = (string)content.id,
+                        FamilyName = (string)content.family_name,
+                        GivenName = (string)content.given_name
+                    };
+                }
+            }
+            else
+                return null;
         }
     }
 }

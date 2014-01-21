@@ -30,13 +30,14 @@ namespace HabrLessonWebApplication.App_Start
                        .SingleInstance();
 
                 //services
-                //builder.RegisterType<GoogleAuthenticationService>()
-                //       .As<IAuthenticationService>();
                 builder.RegisterType<GoogleAuthenticationService>()
                        .As<IAuthenticationService>();
 
                 //controllesrs
                 builder.RegisterType<HomeController>()
+                       .InstancePerHttpRequest();
+
+                builder.RegisterType<GoogleController>()
                        .InstancePerHttpRequest();
             }
 

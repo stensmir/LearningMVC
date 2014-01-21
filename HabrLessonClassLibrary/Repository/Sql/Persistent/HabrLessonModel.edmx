@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="HabrLessonDatabaseModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="HabrLessonDatabaseModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="User">
           <Key>
             <PropertyRef Name="Id" />
@@ -15,12 +15,12 @@
           <Property Name="Email" Type="varchar" MaxLength="250" Nullable="false" />
           <Property Name="LinkToAvatar" Type="varchar(max)" />
           <Property Name="GoogleId" Type="varchar(max)" />
+          <Property Name="Password" Type="varchar(max)" />
         </EntityType>
         <EntityContainer Name="HabrLessonDatabaseModelStoreContainer">
           <EntitySet Name="User" EntityType="Self.User" Schema="HabrLesson" store:Type="Tables" />
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="HabrLessonDatabaseModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -34,6 +34,7 @@
           <Property Name="Email" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="LinkToAvatar" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="GoogleId" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Password" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityContainer Name="HabrLessonDatabaseEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="User" EntityType="Self.User" />
@@ -47,6 +48,7 @@
           <EntitySetMapping Name="User">
             <EntityTypeMapping TypeName="HabrLessonDatabaseModel.User">
               <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="Password" ColumnName="Password" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="GivenName" ColumnName="GivenName" />
                 <ScalarProperty Name="FamilyName" ColumnName="FamilyName" />
