@@ -9,10 +9,13 @@ namespace HabrLessonClassLibrary.Domain
 {
     public class User
     {
-        public BigInteger Id { get; set; }
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
+        public int Id { get; set; }
+        public string GivenName { get; set; }
+        public string FamilyName { get; set; }
+        public string Name { get; set; }
         public string LinkToAvatar { get; set; }
-        public string LoginName { get; set; }
+        public string Email { get; set; }
+        public string GoogleId { get; set; }
+        public string Password { get; set; }
     }
 }

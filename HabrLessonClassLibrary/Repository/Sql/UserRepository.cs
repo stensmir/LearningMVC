@@ -11,7 +11,7 @@ namespace HabrLessonClassLibrary.Repository.Sql
         //public Persistent.HabrLessonDb Context { get; set; }
         public Domain.User GetUserById(int id)
         {
-            using (var context = new Persistent.HabrLessonDB())
+            using (var context = new Persistent.HabrLessonDatabaseEntities())
             {
                 return context.User
                               .Where(x => x.Id == id)
@@ -31,7 +31,7 @@ namespace HabrLessonClassLibrary.Repository.Sql
         {
             Contract.Requires(user != null);
 
-            using (var context = new Persistent.HabrLessonDB())
+            using (var context = new Persistent.HabrLessonDatabaseEntities())
             {
                 var persistentUser = this.ConvertUserToPersistent(user);
                 context.User.Add(persistentUser);
@@ -47,7 +47,7 @@ namespace HabrLessonClassLibrary.Repository.Sql
         public IEnumerable<Domain.User> GetAllDomainUsers()
         {
 
-            using (var context = new Persistent.HabrLessonDB())
+            using (var context = new Persistent.HabrLessonDatabaseEntities())
             {
                 return context.User.ToList().Select(x => this.ConvertUserToDomain(x));
             }
@@ -58,10 +58,10 @@ namespace HabrLessonClassLibrary.Repository.Sql
             return new Domain.User
             {
                  Id = persistentUser.Id,
-                 FirstName = persistentUser.FirstName,
-                 LastName = persistentUser.LastName,
+                 GivenName = persistentUser.GivenName,
+                 FamilyName = persistentUser.FamilyName,
                  LinkToAvatar = persistentUser.LinkToAvatar,
-                 LoginName = persistentUser.Login
+                 Email = persistentUser.Email
             };
         }
 
@@ -69,11 +69,11 @@ namespace HabrLessonClassLibrary.Repository.Sql
         {
             return new Persistent.User
             {
-                Id = (int)domainUser.Id,
-                FirstName = domainUser.FirstName,
-                LastName = domainUser.LastName,
+                Id = domainUser.Id,
+                GivenName = domainUser.GivenName,
+                FamilyName = domainUser.FamilyName,
                 LinkToAvatar = domainUser.LinkToAvatar,
-                Login = domainUser.LoginName
+                Email = domainUser.Email
             };
         }
     }

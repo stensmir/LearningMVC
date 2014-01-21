@@ -7,6 +7,7 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web;
 using System.Numerics;
+using System.Diagnostics.Contracts;
 
 namespace HabrLessonClassLibrary.Services
 {
@@ -42,21 +43,23 @@ namespace HabrLessonClassLibrary.Services
             }
         }
 
-        public Domain.User GetUserInfo(string accessToken)
+        public Domain.User GetUserByAccessToken(string accessToken)
         {
+
+
             using (var client = new HttpClient())
             {
                 var response = client.GetStringAsync(string.Format("https://www.googleapis.com/oauth2/v1/userinfo?access_token={0}", accessToken)).Result;
                 dynamic content = JObject.Parse(response);
 
 
-                return new Domain.User 
+                return new Domain.User
                 {
-                    Id = BigInteger.Parse((string)content.id),
-                    FirstName = content.given_name,
-                    LastName = content.family_name,
                     LinkToAvatar = "",
-                    LoginName = content.email
+                    Email = content.email,
+                    GoogleId = (string)content.id,
+                    FamilyName = (string)content.family_name,
+                    GivenName = (string)content.given_name
                 };
             }
 

@@ -9,7 +9,7 @@ namespace HabrLessonClassLibrary.Services
     {
         string GetUrlRequest(string redirectUri, string responseType, string clientId, string scope);
         string GetAccessToken(string code, string clientId, string clientSecret, string redirectUri, string grantType);
-        Domain.User GetUserInfo(string accessToken);
+        Domain.User GetUserByAccessToken(string accessToken);
 
     }
 }
