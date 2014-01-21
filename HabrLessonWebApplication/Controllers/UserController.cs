@@ -12,15 +12,26 @@ namespace HabrLessonWebApplication.Controllers
         //
         // GET: /User/
 
+        [HttpGet]
         public ActionResult Index()
         {
             var user = new HabrLessonClassLibrary.Domain.User();
             return View(user);
         }
 
+        [HttpPost]
+        public ActionResult Index(HabrLessonClassLibrary.Domain.User user)
+        {
+            var xx = user;
+            return View();
+        }
+
+
+
+        [HttpPost]
         public ActionResult SignUp()
         {
-            return null;
+            return View();
         }
 
         public ActionResult LogIn()
