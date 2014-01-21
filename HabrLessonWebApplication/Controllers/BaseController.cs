@@ -11,7 +11,7 @@ namespace HabrLessonWebApplication.Controllers
     {
         //
         // GET: /Base/
-        public Domain.User CurrentUser { get; set; }
+        //public HabrLessonClassLibrary.Domain.User CurrentUser { get; set; }
 
         public ActionResult Index()
         {

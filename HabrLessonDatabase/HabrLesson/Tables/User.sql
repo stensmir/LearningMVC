@@ -5,5 +5,6 @@
 	[FamilyName] varchar(50) not null,
 	[Email] varchar(250) not null,
 	[LinkToAvatar] varchar(max) null,
-	[GoogleId] varchar(max) null
+	[GoogleId] varchar(max) null,
+	[Password] varchar(max)
 )
