@@ -8,9 +8,11 @@ namespace HabrLessonClassLibrary.Repository
     public interface IUserRepository 
     {
         Domain.User GetUserById(int id);
-        Domain.User GetUserByLogin(string login);
+        Domain.User GetUserByEmail(string email);
         void Save(Domain.User user);
         void CreateUser(Domain.User user);
         IEnumerable<Domain.User> GetAllDomainUsers();
+        int GetUserIdByEmail(string email);
+       
     }
 }

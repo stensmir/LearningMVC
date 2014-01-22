@@ -10,12 +10,13 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="GivenName" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="FamilyName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="GivenName" Type="varchar" MaxLength="50" />
+          <Property Name="FamilyName" Type="varchar" MaxLength="50" />
           <Property Name="Email" Type="varchar" MaxLength="250" Nullable="false" />
           <Property Name="LinkToAvatar" Type="varchar(max)" />
           <Property Name="GoogleId" Type="varchar(max)" />
           <Property Name="Password" Type="varchar(max)" />
+          <Property Name="Name" Type="varchar" MaxLength="250" />
         </EntityType>
         <EntityContainer Name="HabrLessonDatabaseModelStoreContainer">
           <EntitySet Name="User" EntityType="Self.User" Schema="HabrLesson" store:Type="Tables" />
@@ -29,12 +30,13 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="GivenName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="FamilyName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="GivenName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="FamilyName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Email" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="LinkToAvatar" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="GoogleId" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="Password" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Name" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityContainer Name="HabrLessonDatabaseEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="User" EntityType="Self.User" />
@@ -48,6 +50,7 @@
           <EntitySetMapping Name="User">
             <EntityTypeMapping TypeName="HabrLessonDatabaseModel.User">
               <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Password" ColumnName="Password" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="GivenName" ColumnName="GivenName" />

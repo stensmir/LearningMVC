@@ -20,8 +20,14 @@ namespace HabrLessonWebApplication
             //);
 
             routes.MapRoute(null, "", new { controller = "Home", Action = "Index" });
-            routes.MapRoute(null, "Google", new { controller = "Google", Action = "Index" });
+
+
+            routes.MapRoute(null, "Google", new { controller = "Google", Action = "SignUp" });
             routes.MapRoute(null, "Google/SignIn", new { controller = "Google", Action = "SignIn" });
+
+            routes.MapRoute(null, "SignUp", new { controller = "SignUp", Action = "SignUp" });
+            routes.MapRoute(null, "SignUp/SignUp", new { controller = "SignUp", Action = "SignUp" });
+
 
             routes.MapRoute(null, "User/Index", new { controller = "User", Action = "Index" });
             routes.MapRoute(null, "User/SignIn", new { controller = "User", Action = "SignIn" });

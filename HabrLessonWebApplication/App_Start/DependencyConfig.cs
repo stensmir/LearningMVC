@@ -39,6 +39,9 @@ namespace HabrLessonWebApplication.App_Start
 
                 builder.RegisterType<GoogleController>()
                        .InstancePerHttpRequest();
+
+                builder.RegisterType<SignUpController>()
+                       .InstancePerHttpRequest();
             }
 
             var container = builder.Build();

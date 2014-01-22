@@ -21,5 +21,6 @@ namespace HabrLessonClassLibrary.Repository.Sql.Persistent
         public string LinkToAvatar { get; set; }
         public string GoogleId { get; set; }
         public string Password { get; set; }
+        public string Name { get; set; }
     }
 }

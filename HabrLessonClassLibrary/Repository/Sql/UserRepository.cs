@@ -21,21 +21,26 @@ namespace HabrLessonClassLibrary.Repository.Sql
             }
         }
 
-        public Domain.User GetUserByLogin(string login)
+        public Domain.User GetUserByEmail(string email)
         {
-            //Contract.Reauires
-            throw new NotImplementedException();
+            using (var context = new Persistent.HabrLessonDatabaseEntities())
+            {
+                var user = context.User.Where(x => x.Email.Equals(email)).First();
+                return this.ConvertUserToDomain(user);
+            }
         }
 
         public void Save(Domain.User user)
         {
-            Contract.Requires(user != null);
 
             using (var context = new Persistent.HabrLessonDatabaseEntities())
             {
-                var persistentUser = this.ConvertUserToPersistent(user);
-                context.User.Add(persistentUser);
-                context.SaveChanges();
+                if (!context.User.Any(x => x.Email.Equals(user.Email)))
+                {
+                    var persistentUser = this.ConvertUserToPersistent(user);
+                    context.User.Add(persistentUser);
+                    context.SaveChanges();
+                }
             }
         }
 
@@ -53,15 +58,21 @@ namespace HabrLessonClassLibrary.Repository.Sql
             }
         }
 
+        public int GetUserIdByEmail(string email)
+        {
+            throw new NotImplementedException();
+        }
+
         private Domain.User ConvertUserToDomain(Persistent.User persistentUser)
         {
             return new Domain.User
             {
-                 Id = persistentUser.Id,
+                 //Id = persistentUser.Id,
                  GivenName = persistentUser.GivenName,
                  FamilyName = persistentUser.FamilyName,
                  LinkToAvatar = persistentUser.LinkToAvatar,
-                 Email = persistentUser.Email
+                 Email = persistentUser.Email,
+                 Name = persistentUser.Name
             };
         }
 
@@ -69,14 +80,17 @@ namespace HabrLessonClassLibrary.Repository.Sql
         {
             return new Persistent.User
             {
-                Id = domainUser.Id,
+                //Id = domainUser.Id,
                 GivenName = domainUser.GivenName,
                 FamilyName = domainUser.FamilyName,
                 LinkToAvatar = domainUser.LinkToAvatar,
                 Email = domainUser.Email,
-                Password = "",
-                GoogleId = domainUser.GoogleId
+                Password = domainUser.Password,
+                GoogleId = domainUser.GoogleId,
+                Name = domainUser.Name
             };
         }
+
+       
     }
 }
