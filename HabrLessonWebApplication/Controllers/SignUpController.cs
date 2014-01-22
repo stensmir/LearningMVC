@@ -35,7 +35,8 @@ namespace HabrLessonWebApplication.Controllers
         {
             _userepository.Save(user);
             //send email
-            return View(user);
+            this.Session["CurrentUser"] = user;
+            return RedirectToAction("Index", "Themes");
         }
 
     }

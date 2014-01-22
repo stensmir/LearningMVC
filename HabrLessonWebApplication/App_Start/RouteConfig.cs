@@ -28,6 +28,10 @@ namespace HabrLessonWebApplication
             routes.MapRoute(null, "SignUp", new { controller = "SignUp", Action = "SignUp" });
             routes.MapRoute(null, "SignUp/SignUp", new { controller = "SignUp", Action = "SignUp" });
 
+            routes.MapRoute(null, "Themes", new { controller = "Themes", Action = "Index" });
+
+            
+
 
             routes.MapRoute(null, "User/Index", new { controller = "User", Action = "Index" });
             routes.MapRoute(null, "User/SignIn", new { controller = "User", Action = "SignIn" });
