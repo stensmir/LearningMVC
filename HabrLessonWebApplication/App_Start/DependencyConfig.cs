@@ -42,6 +42,9 @@ namespace HabrLessonWebApplication.App_Start
 
                 builder.RegisterType<SignUpController>()
                        .InstancePerHttpRequest();
+
+                builder.RegisterType<LogInController>()
+                       .InstancePerHttpRequest();
             }
 
             var container = builder.Build();

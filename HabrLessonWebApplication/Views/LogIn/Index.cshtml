@@ -1,0 +1,33 @@
+﻿@model HabrLessonClassLibrary.Domain.User
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Login</h2>
+
+@using (Html.BeginForm("Index", "Login", FormMethod.Post, new { @class = "form-horizontal" }))
+{
+    <fieldset>
+        <div class="control-group">
+            <label class="control-label" for="Email">
+                Email
+            </label>
+            <div class="controls">
+                @Html.TextBox("Email", Model.Email)
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label" for="Password">
+                Email
+            </label>
+            <div class="controls">
+                @Html.Password("Password", Model.Password)
+            </div>
+        </div>
+        <div class="form-actions">
+            <button type="submit" class="btn btn-primary">
+                Login
+            </button>
+        </div>
+    </fieldset>
+}

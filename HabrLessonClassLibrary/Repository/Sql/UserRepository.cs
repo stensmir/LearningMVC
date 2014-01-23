@@ -44,11 +44,6 @@ namespace HabrLessonClassLibrary.Repository.Sql
             }
         }
 
-        public void CreateUser(Domain.User user)
-        {
-            throw new NotImplementedException();
-        }
-
         public IEnumerable<Domain.User> GetAllDomainUsers()
         {
 
@@ -58,9 +53,20 @@ namespace HabrLessonClassLibrary.Repository.Sql
             }
         }
 
-        public int GetUserIdByEmail(string email)
+        public Domain.User GetUserIdByEmailAndPassword(string email, string password)
         {
-            throw new NotImplementedException();
+            using (var context = new Persistent.HabrLessonDatabaseEntities())
+            {
+                var user = context.User.FirstOrDefault(u => string.Compare(u.Email, email, true) == 0 && u.Password == password);
+                if (user != null)
+                {
+                    return this.ConvertUserToDomain(user);
+                }
+                else
+                {
+                    return null;
+                }
+            }
         }
 
         private Domain.User ConvertUserToDomain(Persistent.User persistentUser)
@@ -91,6 +97,8 @@ namespace HabrLessonClassLibrary.Repository.Sql
             };
         }
 
-       
+
+
+        
     }
 }

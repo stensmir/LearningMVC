@@ -30,6 +30,10 @@ namespace HabrLessonWebApplication
 
             routes.MapRoute(null, "Themes", new { controller = "Themes", Action = "Index" });
 
+            routes.MapRoute(null, "Login", new { controller = "Login", Action = "Index" });
+            routes.MapRoute(null, "Login/Index", new { controller = "Login", Action = "Index" });
+
+
             
 
 

@@ -10,9 +10,7 @@ namespace HabrLessonClassLibrary.Repository
         Domain.User GetUserById(int id);
         Domain.User GetUserByEmail(string email);
         void Save(Domain.User user);
-        void CreateUser(Domain.User user);
-        IEnumerable<Domain.User> GetAllDomainUsers();
-        int GetUserIdByEmail(string email);
+        Domain.User GetUserIdByEmailAndPassword(string email, string password);
        
     }
 }
