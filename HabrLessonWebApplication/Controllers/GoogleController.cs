@@ -39,11 +39,16 @@ namespace HabrLessonWebApplication.Controllers
             var accessToken = _googleAuthenticationService.GetAccessToken(code, "195877203613-644j0q6hmmha74lrtc01s2mupao32q1f.apps.googleusercontent.com", "wyTBnUJodeGGuHV5L1g3S_SQ", "https://localhost:44300/Google/SignIn", "authorization_code");
             var uInfo = _googleAuthenticationService.GetUserByAccessToken(accessToken);
 
-            _userRepository.Save(uInfo);
-            var currentUser = _userRepository.GetUserByEmail(uInfo.Email);
+            if (uInfo != null)
+            {
+                _userRepository.Save(uInfo);
+                var currentUser = _userRepository.GetUserByEmail(uInfo.Email);
 
-            Session["CurrentUser"] = currentUser;
-            return RedirectToAction("Index", "Home");
+                Session["CurrentUser"] = currentUser;
+                return RedirectToAction("Index", "Themes");
+            }
+            else
+                return RedirectToAction("Error", "Home", new { errorMessage = "access_denied" });
         }
 
     }

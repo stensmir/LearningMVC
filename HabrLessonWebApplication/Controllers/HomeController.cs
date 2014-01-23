@@ -22,6 +22,12 @@ namespace HabrLessonWebApplication.Controllers
             _userRepository = userRepository;
         }
 
+        public ActionResult Error(string errorMessage)
+        {
+            var x = errorMessage;
+            return View();
+        }
+
 
     }
 }
