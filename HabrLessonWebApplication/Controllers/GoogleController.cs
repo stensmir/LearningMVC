@@ -20,12 +20,6 @@ namespace HabrLessonWebApplication.Controllers
             _userRepository = userRepository; 
             
         }
-        //public ActionResult Index(string code)
-        //{
-        //    var urlRequest = _googleAuthenticationService.GetUrlRequest("https://localhost:44300/Google/SignIn", "code", "195877203613-644j0q6hmmha74lrtc01s2mupao32q1f.apps.googleusercontent.com", "email%20profile");
-        //    return Redirect(urlRequest);
-            
-        //}
 
         public ActionResult SignUp()
         {

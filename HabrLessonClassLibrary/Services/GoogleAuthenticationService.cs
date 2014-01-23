@@ -8,13 +8,14 @@ using System.Threading.Tasks;
 using System.Web;
 using System.Numerics;
 using System.Diagnostics.Contracts;
+using System.Configuration;
 
 namespace HabrLessonClassLibrary.Services
 {
     public class GoogleAuthenticationService : IAuthenticationService
     {
         private readonly string _baseGoogleRequestCodeUrl = "https://accounts.google.com/o/oauth2/auth?redirect_uri={0}&response_type={1}&client_id={2}&scope={3}";
-
+        
         public string GetUrlRequest(string redirectUri, string responseType, string clientId, string scope)
         {
             var requestString = string.Format(_baseGoogleRequestCodeUrl, redirectUri, responseType, clientId, scope);
