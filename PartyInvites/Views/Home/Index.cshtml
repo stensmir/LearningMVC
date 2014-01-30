@@ -9,10 +9,16 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>Index</title>
+    <meta name="description" content="The description of my page" />
 </head>
 <body>
-    <div> 
+    <div>
         @ViewBag.Greeting World (from the view)
+        <p>
+            We're going to have an exciting patry. <br />
+            (To do: sell it beter. Add pictures or something)
+        </p>
+        @Html.ActionLink("RSVP Now", "RsvpForm")
     </div>
 </body>
 </html>
