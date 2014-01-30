@@ -11,7 +11,7 @@ namespace HabrLessonClassLibrary.Repository.Sql
         //public Persistent.HabrLessonDb Context { get; set; }
         public Domain.User GetUserById(int id)
         {
-            using (var context = new Persistent.HabrLessonDatabaseEntities())
+            using (var context = new Persistent.HabrLessonDb())
             {
                 return context.User
                               .Where(x => x.Id == id)
@@ -23,7 +23,7 @@ namespace HabrLessonClassLibrary.Repository.Sql
 
         public Domain.User GetUserByEmail(string email)
         {
-            using (var context = new Persistent.HabrLessonDatabaseEntities())
+            using (var context = new Persistent.HabrLessonDb())
             {
                 var user = context.User.Where(x => x.Email.Equals(email)).First();
                 return this.ConvertUserToDomain(user);
@@ -33,7 +33,7 @@ namespace HabrLessonClassLibrary.Repository.Sql
         public void Save(Domain.User user)
         {
 
-            using (var context = new Persistent.HabrLessonDatabaseEntities())
+            using (var context = new Persistent.HabrLessonDb())
             {
                 if (!context.User.Any(x => x.Email.Equals(user.Email)))
                 {
@@ -47,7 +47,7 @@ namespace HabrLessonClassLibrary.Repository.Sql
         public IEnumerable<Domain.User> GetAllDomainUsers()
         {
 
-            using (var context = new Persistent.HabrLessonDatabaseEntities())
+            using (var context = new Persistent.HabrLessonDb())
             {
                 return context.User.ToList().Select(x => this.ConvertUserToDomain(x));
             }
@@ -55,7 +55,7 @@ namespace HabrLessonClassLibrary.Repository.Sql
 
         public Domain.User GetUserIdByEmailAndPassword(string email, string password)
         {
-            using (var context = new Persistent.HabrLessonDatabaseEntities())
+            using (var context = new Persistent.HabrLessonDb())
             {
                 var user = context.User.FirstOrDefault(u => string.Compare(u.Email, email, true) == 0 && u.Password == password);
                 if (user != null)

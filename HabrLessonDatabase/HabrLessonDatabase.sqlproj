@@ -72,6 +72,7 @@
   <ItemGroup>
     <None Include="HabrLesson\Scripts\User.InitData.sql" />
     <None Include="HabrLessonDatabase.publish.xml" />
+    <None Include="HabrLessonDb_local.publish.publish.xml" />
   </ItemGroup>
   <ItemGroup>
     <PostDeploy Include="Scripts\Script.PostDeployment.sql" />
