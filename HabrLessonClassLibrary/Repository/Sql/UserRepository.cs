@@ -84,6 +84,7 @@ namespace HabrLessonClassLibrary.Repository.Sql
 
         private Persistent.User ConvertUserToPersistent(Domain.User domainUser)
         {
+            
             return new Persistent.User
             {
                 //Id = domainUser.Id,
