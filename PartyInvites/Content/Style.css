@@ -23,3 +23,41 @@
 .validation-summary-valid {
     display: none;
 }
+
+.button {
+	display: inline-block;
+	background-color: #d7dcde;
+	font-size: 16px;
+	color: white;
+	text-align: center;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	border-radius: 4px;
+	height: 36px;
+	line-height: 36px;
+	padding: 0 15px;
+	margin: 0;
+	border: 0;
+}
+
+
+
+
+.button:hover {
+	text-decoration: none;
+}
+
+.button.green {
+	background-color: #4abfb4;
+}
+
+.button.green:hover {
+	background-color: #70cbc4;
+}
+
+.footer {
+    height: 56px;
+    background: #d8dde6;
+    position: relative;
+    z-index: 2;
+}

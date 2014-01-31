@@ -8,22 +8,25 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" />
-    <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap-theme.min.css" rel="stylesheet" />
     <title>Index</title>
+    <link href="~/Content/Style.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
     <meta name="description" content="The description of my page" />
     <style>
-        .btn a { color: white; text-decoration:none }
+        .button a { color: white; text-decoration:none }
         body { background-color: white; }
     </style>
 </head>
 <body>
-    <div class="text-center">
+    <div class="text-center" style="min-height:820px">
         @ViewBag.Greeting World (from the view)
         <h2>We're going to have an exciting patry.</h2>
-        <div class="btn btn-success">
+        <div class="button green">
             @Html.ActionLink("RSVP Now", "RsvpForm")
         </div>
+    </div>
+    <div class="footer">
+        Input
     </div>
 </body>
 </html>
