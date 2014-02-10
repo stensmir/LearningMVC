@@ -55,6 +55,10 @@
 	background-color: #70cbc4;
 }
 
+.button.wide {
+    width: 100%;
+}
+
 .footer {
     height: 56px;
     background: #d8dde6;
