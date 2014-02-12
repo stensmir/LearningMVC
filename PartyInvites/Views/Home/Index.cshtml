@@ -1,4 +1,4 @@
-﻿
+﻿@model IEnumerable<string>
 @{
     Layout = null;
 }
@@ -31,6 +31,15 @@
         {
             <div class="button green">
                 @Html.ActionLink("GoGgo", "Go")
+            </div>
+            
+           
+        }
+
+        @foreach (var tag in Model)
+        {
+            <div class="my_tag">
+                @tag
             </div>
         }
         

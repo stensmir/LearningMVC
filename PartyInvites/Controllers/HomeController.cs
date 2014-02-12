@@ -17,7 +17,10 @@ namespace PartyInvites.Controllers
             var hour = DateTime.Now.Hour;
             ViewBag.Greeting = hour < 12 ? "Good morning" : "Good afternoon";
             ViewBag.Condition = false;
-            return View();
+
+            var tags = new[] { "mvc", "asp", "win8" };
+
+            return View(tags);
         }
 
         [HttpGet]
