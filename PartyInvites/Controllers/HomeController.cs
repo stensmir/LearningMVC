@@ -20,7 +20,7 @@ namespace PartyInvites.Controllers
 
             var tags = new[] { "mvc", "asp", "win8" };
 
-            return View(tags);
+            return View("Boot");
         }
 
         [HttpGet]
